@@ -46,6 +46,12 @@ public:
   MatrixXd S_laser_;
   MatrixXd S_radar_;
 
+  // Measurement matrix
+  MatrixXd H_laser_;
+
+  // Measurement covariance matrix
+  MatrixXd R_laser_;
+
   ///* time when the state is true, in us
   long long time_us_;
 
@@ -129,6 +135,8 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+
+  void NormalizeAngle(double &phi);
 };
 
 #endif /* UKF_H */
